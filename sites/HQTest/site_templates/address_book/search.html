@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{#################################################################################################################}
+
+{% block window_title %}
+    <title>address book search</title>
+{% endblock window_title %}
+
+{#################################################################################################################}
+
+{% block local_stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}site_media/sfb.css?version=1"/>
+{% endblock local_stylesheets %}
+
+{#################################################################################################################}
+
+{% block content %}
+
+<hr class="space"/>
+<hr class="space"/>
+<div class="prepend-2 prepend-top last">
+{% for inst in instructions_1 %}
+<h3><strong>{{inst}}</strong></h3>
+{% endfor %}
+
+{% for inst in instructions_2 %}
+<h3>{{inst}}</h3>
+{% endfor %}
+</div>
+<hr class="space"/>
+<hr class="space"/>
+<!-- Search form -->  
+<div class="span-10" style="margin-left:auto; margin-right:auto; float:none">
+<form class="sfb" name="form" method="post" action="{{action}}">
+
+<h3>{{search_type}}</h3>
+
+{% if form.non_field_errors %}
+  <div class="non_field_errors">
+  {{ form.non_field_errors }}
+  </div>
+{% endif %}
+
+{% if next %}
+<input name="next" type="hidden" value="{{next}}" />
+{% endif %}
+
+<!-- See: http://woork.blogspot.com/2008/06/clean-and-pure-css-form-design.html for
+  example of multiline text associated with each input field -->
+
+{% for field in form.visible_fields %}
+  {% if field.errors %}
+    <div class="field_errors">
+    {{field.errors}}
+    </div>
+  {% endif %}
+  <div class="prepend-1 span-2 clear"> <div style="float:right;">
+  {{ field.label_tag }}
+  </div></div>
+  <div class="span-2">
+  {{ field }}
+  </div>
+{% endfor %}
+  
+<div style="text-align: center"><button type="submit">Submit</button></div>
+</form>
+
+</div> <!-- sfa -->
+<!-- Search form -->  
+
+{% endblock content %}     

@@ -1,0 +1,53 @@
+- fields: {app_label: contenttypes, model: contenttype, name: content type}
+  model: contenttypes.contenttype
+  pk: 5
+- fields: {app_label: domain, model: domain, name: domain}
+  model: contenttypes.contenttype
+  pk: 11
+- fields: {app_label: address_book, model: email, name: email}
+  model: contenttypes.contenttype
+  pk: 16
+- fields: {app_label: auth, model: group, name: group}
+  model: contenttypes.contenttype
+  pk: 2
+- fields: {app_label: admin, model: logentry, name: log entry}
+  model: contenttypes.contenttype
+  pk: 8
+- fields: {app_label: domain, model: membership, name: membership}
+  model: contenttypes.contenttype
+  pk: 12
+- fields: {app_label: auth, model: message, name: message}
+  model: contenttypes.contenttype
+  pk: 4
+- fields: {app_label: address_book, model: patient, name: patient}
+  model: contenttypes.contenttype
+  pk: 15
+- fields: {app_label: auth, model: permission, name: permission}
+  model: contenttypes.contenttype
+  pk: 1
+- fields: {app_label: django_granular_permissions, model: permission, name: permission}
+  model: contenttypes.contenttype
+  pk: 9
+- fields: {app_label: address_book, model: phone, name: phone}
+  model: contenttypes.contenttype
+  pk: 17
+- fields: {app_label: user_registration, model: registrationprofile, name: registration
+      profile}
+  model: contenttypes.contenttype
+  pk: 10
+- fields: {app_label: domain, model: registrationrequest, name: registration request}
+  model: contenttypes.contenttype
+  pk: 13
+- fields: {app_label: sessions, model: session, name: session}
+  model: contenttypes.contenttype
+  pk: 6
+- fields: {app_label: domain, model: settings, name: settings}
+  model: contenttypes.contenttype
+  pk: 14
+- fields: {app_label: sites, model: site, name: site}
+  model: contenttypes.contenttype
+  pk: 7
+- fields: {app_label: auth, model: user, name: user}
+  model: contenttypes.contenttype
+  pk: 3
+

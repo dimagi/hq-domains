@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{#################################################################################################################}
+
+{% block window_title %}
+<title>address book - new patient added</title>
+{% endblock window_title %}
+
+{#################################################################################################################}
+
+{% block content %}
+
+<hr class="space"/>
+<div class="prepend-2">
+<h3><strong>Added new patient '{{ first_name }} {{ last_name }}'</strong></h3>
+<hr class="space"/>  
+<h4><a href="{% url homepage %}">Homepage</h4>
+</div>
+
+{% endblock content %}
+
+{#################################################################################################################}    

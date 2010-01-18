@@ -1,0 +1,20 @@
+# Lines starting with '#' are considered comments.
+
+# Emacs backup files
+*.*~
+
+# Emacs temp files
+\#*
+.\#*
+
+# Python bytecode
+*.pyc
+
+# Backed-up database dumps
+*.fixture.???
+
+# Mac stuff
+.DS_Store
+
+# CONFIDENTIAL PASSWORDS! Don't put these in git
+settings_confidential.py

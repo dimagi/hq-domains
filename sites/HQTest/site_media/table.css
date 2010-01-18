@@ -1,0 +1,56 @@
+.table_base {
+background-color: #666;
+border: 0px;
+border-collapse: collapse;
+border-spacing: 0px;
+color: #fff;
+font-weight: normal;
+margin: 10px auto 20px auto;
+text-align: center;
+width: 800px;
+}
+
+.table_base caption {
+background: none;
+color: black;
+font-weight: bold;
+margin: 20px auto 10px auto;
+}
+
+.table_base th.hed {
+background-color: #666;
+border: 1px black solid;
+color: white;
+font-size: 12px;
+font-weight: bold;
+padding: 4px;
+text-align: center;
+}
+
+.table_base td {
+background-color: #EBF4FB;
+border: 1px lightgray solid;
+color: black;
+padding: 4px;
+text-align: center;
+}
+
+.table_base a {
+color: black;
+}
+
+th.hed a {
+color: white;
+vertical-align: text-bottom;
+}
+
+.pagination {
+width: 200px;
+margin: 0 auto 20px auto;
+text-align: center;
+}
+ 
+.table_base img, .pagination img {
+    vertical-align: text-bottom;	
+}
+

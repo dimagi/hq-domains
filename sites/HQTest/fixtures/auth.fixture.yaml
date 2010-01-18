@@ -1,0 +1,192 @@
+- fields: {codename: add_email, content_type: 16, name: Can add email}
+  model: auth.permission
+  pk: 46
+- fields: {codename: add_patient, content_type: 15, name: Can add patient}
+  model: auth.permission
+  pk: 43
+- fields: {codename: add_phone, content_type: 17, name: Can add phone}
+  model: auth.permission
+  pk: 49
+- fields: {codename: change_email, content_type: 16, name: Can change email}
+  model: auth.permission
+  pk: 47
+- fields: {codename: change_patient, content_type: 15, name: Can change patient}
+  model: auth.permission
+  pk: 44
+- fields: {codename: change_phone, content_type: 17, name: Can change phone}
+  model: auth.permission
+  pk: 50
+- fields: {codename: delete_email, content_type: 16, name: Can delete email}
+  model: auth.permission
+  pk: 48
+- fields: {codename: delete_patient, content_type: 15, name: Can delete patient}
+  model: auth.permission
+  pk: 45
+- fields: {codename: delete_phone, content_type: 17, name: Can delete phone}
+  model: auth.permission
+  pk: 51
+- fields: {codename: add_logentry, content_type: 8, name: Can add log entry}
+  model: auth.permission
+  pk: 22
+- fields: {codename: change_logentry, content_type: 8, name: Can change log entry}
+  model: auth.permission
+  pk: 23
+- fields: {codename: delete_logentry, content_type: 8, name: Can delete log entry}
+  model: auth.permission
+  pk: 24
+- fields: {codename: add_group, content_type: 2, name: Can add group}
+  model: auth.permission
+  pk: 4
+- fields: {codename: add_message, content_type: 4, name: Can add message}
+  model: auth.permission
+  pk: 10
+- fields: {codename: add_permission, content_type: 1, name: Can add permission}
+  model: auth.permission
+  pk: 1
+- fields: {codename: add_user, content_type: 3, name: Can add user}
+  model: auth.permission
+  pk: 7
+- fields: {codename: change_group, content_type: 2, name: Can change group}
+  model: auth.permission
+  pk: 5
+- fields: {codename: change_message, content_type: 4, name: Can change message}
+  model: auth.permission
+  pk: 11
+- fields: {codename: change_permission, content_type: 1, name: Can change permission}
+  model: auth.permission
+  pk: 2
+- fields: {codename: change_user, content_type: 3, name: Can change user}
+  model: auth.permission
+  pk: 8
+- fields: {codename: delete_group, content_type: 2, name: Can delete group}
+  model: auth.permission
+  pk: 6
+- fields: {codename: delete_message, content_type: 4, name: Can delete message}
+  model: auth.permission
+  pk: 12
+- fields: {codename: delete_permission, content_type: 1, name: Can delete permission}
+  model: auth.permission
+  pk: 3
+- fields: {codename: delete_user, content_type: 3, name: Can delete user}
+  model: auth.permission
+  pk: 9
+- fields: {codename: add_contenttype, content_type: 5, name: Can add content type}
+  model: auth.permission
+  pk: 13
+- fields: {codename: change_contenttype, content_type: 5, name: Can change content
+      type}
+  model: auth.permission
+  pk: 14
+- fields: {codename: delete_contenttype, content_type: 5, name: Can delete content
+      type}
+  model: auth.permission
+  pk: 15
+- fields: {codename: add_permission, content_type: 9, name: Can add permission}
+  model: auth.permission
+  pk: 25
+- fields: {codename: change_permission, content_type: 9, name: Can change permission}
+  model: auth.permission
+  pk: 26
+- fields: {codename: delete_permission, content_type: 9, name: Can delete permission}
+  model: auth.permission
+  pk: 27
+- fields: {codename: add_domain, content_type: 11, name: Can add domain}
+  model: auth.permission
+  pk: 31
+- fields: {codename: add_membership, content_type: 12, name: Can add membership}
+  model: auth.permission
+  pk: 34
+- fields: {codename: add_registrationrequest, content_type: 13, name: Can add registration
+      request}
+  model: auth.permission
+  pk: 37
+- fields: {codename: add_settings, content_type: 14, name: Can add settings}
+  model: auth.permission
+  pk: 40
+- fields: {codename: change_domain, content_type: 11, name: Can change domain}
+  model: auth.permission
+  pk: 32
+- fields: {codename: change_membership, content_type: 12, name: Can change membership}
+  model: auth.permission
+  pk: 35
+- fields: {codename: change_registrationrequest, content_type: 13, name: Can change
+      registration request}
+  model: auth.permission
+  pk: 38
+- fields: {codename: change_settings, content_type: 14, name: Can change settings}
+  model: auth.permission
+  pk: 41
+- fields: {codename: delete_domain, content_type: 11, name: Can delete domain}
+  model: auth.permission
+  pk: 33
+- fields: {codename: delete_membership, content_type: 12, name: Can delete membership}
+  model: auth.permission
+  pk: 36
+- fields: {codename: delete_registrationrequest, content_type: 13, name: Can delete
+      registration request}
+  model: auth.permission
+  pk: 39
+- fields: {codename: delete_settings, content_type: 14, name: Can delete settings}
+  model: auth.permission
+  pk: 42
+- fields: {codename: add_session, content_type: 6, name: Can add session}
+  model: auth.permission
+  pk: 16
+- fields: {codename: change_session, content_type: 6, name: Can change session}
+  model: auth.permission
+  pk: 17
+- fields: {codename: delete_session, content_type: 6, name: Can delete session}
+  model: auth.permission
+  pk: 18
+- fields: {codename: add_site, content_type: 7, name: Can add site}
+  model: auth.permission
+  pk: 19
+- fields: {codename: change_site, content_type: 7, name: Can change site}
+  model: auth.permission
+  pk: 20
+- fields: {codename: delete_site, content_type: 7, name: Can delete site}
+  model: auth.permission
+  pk: 21
+- fields: {codename: add_registrationprofile, content_type: 10, name: Can add registration
+      profile}
+  model: auth.permission
+  pk: 28
+- fields: {codename: change_registrationprofile, content_type: 10, name: Can change
+      registration profile}
+  model: auth.permission
+  pk: 29
+- fields: {codename: delete_registrationprofile, content_type: 10, name: Can delete
+      registration profile}
+  model: auth.permission
+  pk: 30
+- fields:
+    date_joined: 2010-01-16 15:19:38
+    email: admin@bar.com
+    first_name: Foo
+    groups: []
+    is_active: 1
+    is_staff: 1
+    is_superuser: 1
+    last_login: 2010-01-16 15:28:36
+    last_name: Bar
+    password: sha1$6ca06$ff2abac6bedfe010ac753c7f1f8460e97a23aa45
+    user_permissions: []
+    username: admin
+  model: auth.user
+  pk: 1
+- fields:
+    date_joined: 2010-01-16 15:20:09
+    email: foo@bar.com
+    first_name: Foo
+    groups: []
+    is_active: 1
+    is_staff: 1
+    is_superuser: 0
+    last_login: 2010-01-16 15:30:44
+    last_name: Bar
+    password: sha1$5d75f$68b8e7c83c1bfd515de6b102449a9d479edaa1e8
+    user_permissions: []
+    username: foo
+  model: auth.user
+  pk: 2
+

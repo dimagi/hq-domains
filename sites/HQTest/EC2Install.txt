@@ -1,0 +1,90 @@
+
+EC2:
+
+- Clean Ubuntu image (get AMI ID from Ubuntu website)
+- Have to log on as "ubuntu" user instead of root
+
+<SYSTEM SETUP>
+- sudo tasksel --section server run multiple times. By the time I was done, it had: Basic Ubuntu server, cloud computing cluster, cloud computing node, LAMP server, mail server, OpenSSH server, Ubuntu Enterprise Cloud (instance)
+- aptitude search <name> find packages
+- sudo apt-get update     gets the latest package list, after which apt-get install will do the trick
+- sudo apt-get install emacs23
+- sudo apt-get install mysql-server-5.1
+- sudo apt-get install python2.6-mysqldb
+- sudo apt-get install python-django
+- sudo apt-get install libapache2-mod-wsgi
+- sudo apt-get install python-yaml
+ -sudo apt-get install git-core
+- sudo apt-get install python2.6-setuptools
+ 
+- install latest django debug toolbar (the packaged one is old) :
+git clone git://github.com/robhudson/django-debug-toolbar.git
+sudo python setup.py install
+</SYSTEM SETUP>
+
+<DATABASE CREATION>
+- create database and hqtest user:
+mysql --user=root --password=root
+create database hqtest
+create user hqtest identified by 'hqtest'
+update mysql.user set Host='localhost' where user = 'hqtest''
+Grant all privileges on hqtest.* to 'hqtest'@'localhost';
+flush privileges
+show grants for 'hqtest''@'localhost';
+</DATABASE CREATION>
+
+<SITE-SPECIFIC EDITS>
+I created a /Users/ross/web directory on the image and bind-mounted /vol/web to it, so there's no editing required on my AMI. If you were to mount it directly to /vol/web, here's what you'd edit:
+- download a tar of the "web" directory and unpack it. 
+
+- edit /etc/apache2/httpd.conf to include the single line:
+    Include "/vol/web/apache/apache_django_wsgi.conf"
+
+- edit the apache_django_wsgi.conf file to point at the django
+      install. Here:
+
+      Alias /media/ "/usr/lib/pymodules/python2.6/django/contrib/admin/media/"
+     <Directory
+      "/usr/lib/pymodules/python2.6/django/contrib/admin/media">
+
+- edit apache_django_wsgi.conf to point at location of "web" dir on new machine. Everywhere there's a /Users/ross in the downloaded files, change that to the local dir that holds the "web" dir (here, /vol/web)
+
+-edit web/common_code/django_path_setup.py  to point to the dir holding the "web" dir (here, I changed /Users/ross to /vol/web)
+
+- copy django_path_setup.py to the local python site packages dir, or anywhere else that's naturally on python's path (here, '/usr/local/lib/python2.6/dist-packages')
+</SITE-SPECIFIC EDITS>
+
+- Set up username/password of SMTP server in settings_email.py
+
+- Look for instances of HQTest in settings.py, and adjust to wherever the actual mount point is on your server.
+
+<DATABASE INITIAL SYNC>
+- run sites/HQTest/manage.py syncdb
+- run sites/HQTest/restore_database.py - this will add the development/test data. On a prod site, don't do this!
+
+You'll need to add the DNS of the hosting site to the django_site table, so that password-reset email knows what links to put out.
+</DATABASE INITIAL SYNC>
+
+<EXTERNAL VOL AND BUNDLING>
+Read this guide to dealing with external drives and running MySQL on them: http://developer.amazonwebservices.com/connect/entry.jspa?categoryID=100&externalID=1663
+
+EBS vol was mapped to /dev/sdh, and mounted to /vol.
+
+I put everything MySQL related in /vol/mysql, and put the "web" dir in /vol/web. I then pointed /Users/ross/web to /vol/web via a "bind" mount command
+
+Unmount the EBS volume before bundling, else the bundle will include all of the mounted content (exactly what we DON'T want here - machine image should be clean, and db/code should be on external volume)
+
+Bundling:
+mirror=http://us.ec2.archive.ubuntu.com/ubuntu/
+printf "%s\n%s\n" "deb ${mirror} karmic multiverse" "deb-src ${mirror} karmic multiverse" | sudo tee /etc/apt/sources.list.d/multiverse.list
+sudo apt-get update
+sudo apt-get install ec2-ami-tools ec2-api-tools
+sudo ec2-bundle-vol  -C /tmp/cert-X509.pem  -K /tmp/pk-X509.pem -u 942176787180 -p ubuntu-9.10-apache-2.2-django-1.1-mysql-5.1
+ec2-upload-bundle -b 942176787180-ami   -m /tmp/ubuntu-9.10-apache-2.2-django-1.1-mysql-5.1.manifest.xml -a <access key> -s <secret access key>
+ec2-register -C /tmp/cert-X509.pem  -K /tmp/pk-X509.pem -U "https://ec2.amazonaws.com" 942176787180-ami/ubuntu-9.10-apache-2.2-django-1.1-mysql-5.1.manifest.xml
+
+</EXTERNAL VOL AND BUNDLING>
+
+
+
+

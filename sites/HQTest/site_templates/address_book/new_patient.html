@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{#################################################################################################################}
+
+{% block window_title %}
+    <title>address book new patient</title>
+{% endblock window_title %}
+
+{#################################################################################################################}
+
+{% block local_stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}site_media/sfb.css?version=1"/>
+{% endblock local_stylesheets %}
+
+{#################################################################################################################}
+      
+{% block content %}
+
+<script type="text/javascript" src="{{MEDIA_URL}}site_media/new_patient_form_modifier.js"></script>
+
+<style>
+/*  Form elements should be tightly packed here, so override the usual .sfa input bottom margin */
+.sfb input {
+    margin-bottom: 0px;
+}
+
+#email_area, #phone_area {
+    overflow: auto; 
+    float: left; 
+    margin: 0 auto 0 auto; 
+    padding: 10px 0 0 0;
+}
+
+.name_input_wrapper, .email_input_wrapper, .phone_input_wrapper  {
+    border: solid 1px #B7DDF2;
+    margin-bottom: 10px;
+}
+</style>
+
+<hr class="space"/>
+<hr class="space"/>
+
+<!--New patient form -->  
+<div class="span-10 clear" style="margin-left:auto; margin-right:auto; float:none">
+<form class="sfb" name="form" method="POST" action="{% url new_patient %}" style="margin-bottom: 30px !important;">
+
+<h3 style="border-bottom: none; margin-bottom: 10px">New Patient</h3>
+
+{% if patient_form.non_field_errors %}
+  <div class="non_field_errors">
+  {{ patient_form.non_field_errors }}
+  </div>
+{% endif %}
+
+<fieldset class="name_input_wrapper">
+{% for field in patient_form.visible_fields %}
+  {% if field.errors %}
+    <div class="field_errors">
+    {{field.errors}}
+    </div>
+  {% endif %}
+  <div class="prepend-1 span-2 clear"> <div style="float:right;">
+  {{ field.label_tag }}
+  </div></div>
+  <div class="span-2">
+  {{ field }}
+  </div>
+{% endfor %}
+</fieldset>
+
+
+{% for email_form in email_forms %}
+{% if email_form.non_field_errors %}
+  <div class="non_field_errors">
+  {{ email_form.non_field_errors }}
+  </div>
+{% endif %}
+
+<fieldset class="email_input_wrapper">
+{% for field in email_form.visible_fields %}
+  {% if field.errors %}
+    <div class="field_errors">
+    {{field.errors}}
+    </div>
+  {% endif %}
+  <div class="prepend-1 span-2 clear"> <div style="float:right;">
+  {{ field.label_tag }}
+  </div></div>
+  <div class="span-2">
+  {{ field }}
+  </div>
+{% endfor %}
+</fieldset>
+
+{% endfor %} <!--  loop over email forms -->
+<input id="more_email_button" type="button" value="More email?" onclick="addFieldset('email',3)" style="width:80px; float: right; margin-bottom: 5px; font-size: 70%"/>
+<!--  end of email area -->
+
+{% for phone_form in phone_forms %}
+{% if phone_form.non_field_errors %}
+  <div class="non_field_errors">
+  {{ phone_form.non_field_errors }}
+  </div>
+{% endif %}
+
+<fieldset class="clear phone_input_wrapper">
+{% for field in phone_form.visible_fields %}
+  {% if field.errors %}
+    <div class="field_errors">
+    {{field.errors}}
+    </div>
+  {% endif %}
+  <div class="prepend-1 span-2 clear"> <div style="float:right;">
+  {{ field.label_tag }}
+  </div></div>
+  <div class="span-2">
+  {{ field }}
+  </div>
+{% endfor %}
+</fieldset>
+
+{% endfor %} <!--  loop over phone forms -->
+<input id="more_phone_button" type="button" value="More phone #s?" onclick="addFieldset('phone',3)" style="width:120px; float: right; margin-bottom: 20px; font-size: 70%"/>
+<!--  end of phone area -->
+
+<!--  end of form inputs -->
+<div style="text-align:center"><button type="submit">Submit</button></div>
+
+</form>
+</div>
+<!-- New patient form -->  
+
+{% endblock content %}     

@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{#################################################################################################################}p
+
+{% block local_stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}site_media/table.css?version=1"/>
+{% endblock local_stylesheets %}
+
+{#################################################################################################################}
+
+{% block window_title %}
+<title>address book patient details</title>
+{% endblock window_title %}
+
+{#################################################################################################################}
+
+{% block content %}
+
+<hr class="space"/>
+{% if patient %}
+<table class="table_base">
+<caption>Patient</caption>
+<tr>
+<th>ID</th><th>First name</th><th>Last name</th>
+</tr>
+<tr>
+<td>{{patient.id}}</td><td>{{patient.first_name}}</td><td>{{patient.last_name}}</td>
+</tr>
+</table>
+{% endif %}
+
+{% if email_table.rows %}
+<table class="table_base">
+<caption>Email</caption>
+<tr>
+  {% for column in email_table.columns %}
+  <th class="hed" scope="col">
+    {% if column.sortable %}
+      <a href="?email_sort={{ column.name_toggled }}">
+        {{ column }}
+      </a>
+      {% if column.is_ordered_reverse %}
+        <img src="{{MEDIA_URL}}site_media/arrow_up.gif" />
+      {% else %}
+        <img src="{{MEDIA_URL}}site_media/arrow_down.gif" />
+      {% endif %}
+    {% else %}
+      {{ column }}
+    {% endif %}
+  </th>
+  {% endfor %}
+</tr>
+
+{% for row in email_table.rows %}
+  <tr>
+  {% for value in row %}
+    <td>{{ value }}</td>
+  {% endfor %}
+  </tr>
+{% endfor %}
+</table>
+{% else %}
+<div class="prepend-2 span-10 prepend-top">
+<h3>No email records for this patient</h3>
+</div>
+{% endif %}
+
+{% if phone_table.rows %}
+<table class="table_base">
+<caption>Phone</caption>  
+<tr>
+  {% for column in phone_table.columns %}
+  <th class="hed" scope="col">
+    {% if column.sortable %}
+      <a href="?phone_sort={{ column.name_toggled }}">
+        {{ column }}
+      </a>
+      {% if column.is_ordered_reverse %}
+        <img src="{{MEDIA_URL}}site_media/arrow_up.gif" />
+      {% else %}
+        <img src="{{MEDIA_URL}}site_media/arrow_down.gif" />
+      {% endif %}
+    {% else %}
+      {{ column }}
+    {% endif %}
+  </th>
+  {% endfor %}
+</tr>
+
+{% for row in phone_table.rows %}
+  <tr>
+  {% for value in row %}
+    <td>{{ value }}</td>
+  {% endfor %}
+  </tr>
+{% endfor %}
+</table>
+{% else %}
+<div class="prepend-2 span-10 prepend-top">
+<h3>No phone records for this patient</h3>
+</div>
+{% endif %}
+
+{% endblock content %}
+
+{#################################################################################################################}      

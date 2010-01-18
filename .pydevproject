@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse-pydev version="1.0"?>
+
+<pydev_project>
+<pydev_property name="org.python.pydev.PYTHON_PROJECT_VERSION">python 2.6</pydev_property>
+<pydev_property name="org.python.pydev.PYTHON_PROJECT_INTERPRETER">Default</pydev_property>
+<pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
+<path>/web/apps</path>
+<path>/web/apps/address_book</path>
+<path>/web/apps/domain</path>
+<path>/web/common_code</path>
+<path>/web/sites</path>
+<path>/web/sites/HQTest</path>
+<path>/web</path>
+<path>/web/apps/django_tables</path>
+<path>/web/apps/django_granular_permissions</path>
+<path>/web/apps/user_registration</path>
+</pydev_pathproperty>
+</pydev_project>
